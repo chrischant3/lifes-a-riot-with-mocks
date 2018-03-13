@@ -20,7 +20,6 @@ router.get('/', function (req, res, next) {
     }
     res.status(200).json({'accounts': allAccounts})
   })
-
 })
 
 router.get('/:id', function (req, res, next) {
@@ -31,6 +30,9 @@ router.get('/:id', function (req, res, next) {
   accounts.findOne({_id: req.params.id}, function (err, account) {
     if (err) {
       console.log(err)
+      res.status(404).end()
+    }
+    if (account == null) {
       res.status(404).end()
     }
     res.status(200).json(account)
@@ -49,21 +51,38 @@ router.post('/', function (req, res, next) {
       res.send(err)
       return
     }
-    res.status(201).end()
+    res.status(201).json(newAccount)
   })
 })
 
-router.put('/', function (req, res, next) {
-  //TODO if req.body.screen_name not found return 404
+router.put('/:id', function (req, res, next) {
   var contentType = req.headers['content-type']
   if (!contentType || contentType != 'application/json') {
-    // check db for screen_name
     res.status(406).end
   } else {
-    // TODO update json and return it
-    res.status(201).json(jsonResponse)
+    accounts.update({_id: req.params.id}, req.body, {returnUpdatedDocs: true}, function (err, account) {
+      if (err) {
+        console.log(err)
+        res.status(404).end()
+      }
+      res.status(200).json(account)
+    })
+  }
+})
+
+router.delete('/:id', function (req, res, next) {
+  var contentType = req.headers['content-type']
+  if (!contentType || contentType != 'application/json') {
+    res.status(406).end
   }
 
+  accounts.remove({_id: req.params.id}, {}, function (err, accountRemoved) {
+    if (err) {
+      console.log(err)
+      res.status(404).end()
+    }
+    res.status(204).end()
+  })
 })
 
 module.exports = router

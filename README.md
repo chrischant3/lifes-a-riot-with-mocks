@@ -1,10 +1,29 @@
 # Lifes a Riot with Mocks
 
-> What you need to build a simple stub using Node and Express...
 
-> Add a JSON file in {projectDir}/data
+> Add validation to a route 
 
-> Add a new route in {projectDir}/routes/index.js
+```
+ var contentType = req.headers['content-type']
+  if (!contentType || contentType != 'application/json') {
+    res.status(406).json({'Error': 'Content Type should be application/json'})
+  }
+```
+
+> Add new methods to an existing route
+```
+router.post('/', function (req, res, next) {
+  accounts.insert(req.body, function (err, newAccount) {
+    if (err) {
+      res.send(err)
+      return
+    }
+    res.status(201).end()
+  })
+})
+```
+
+> Return an error code based on request parameter or body
 
 ```
 //Required variables
