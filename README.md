@@ -1,4 +1,4 @@
-# Lifes a Riot with Stubs
+# Lifes a Riot with Mocks
 
 > What you need to build a simple stub using Node and Express...
 
@@ -70,7 +70,7 @@ docker build --rm -f Dockerfile .
 To run:
 
 ```
-docker run --rm -d -p 5000:3000 lifes-a-riot-with-stubs
+docker run --rm -d -p 5000:3000 lifes-a-riot-with-mocks
 ```
 *Where 5000 is the host port and 3000 is the exposed port in the container
 

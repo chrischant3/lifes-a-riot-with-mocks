@@ -1,13 +1,14 @@
 {
-  "name": "lifes-a-riot-with-stubs",
+  "name": "lifes-a-riot-with-mocks",
   "version": "1.0.0",
-  "description": "Repo to get workshop attendees started with a simple stub",
+  "description": "Repo to get workshop attendees started with a simple mock",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon node ./bin/www"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrischant3/lifes-a-riot-with-stubs.git"
+    "url": "git+https://github.com/chrischant3/lifes-a-riot-with-mocks.git"
   },
   "keywords": [
     "stub",
@@ -18,13 +19,14 @@
   "author": "Ash Winter & Chris Chant",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chrischant3/lifes-a-riot-with-stubs/issues"
+    "url": "https://github.com/chrischant3/lifes-a-riot-with-mocks/issues"
   },
-  "homepage": "https://github.com/chrischant3/lifes-a-riot-with-stubs#readme",
+  "homepage": "https://github.com/chrischant3/lifes-a-riot-with-mocks#readme",
   "dependencies": {
     "express": "^4.16.2",
     "generate-safe-id": "^1.0.2",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "nedb": "^1.8.0"
   },
   "devDependencies": {
     "nodemon": "^1.15.1"

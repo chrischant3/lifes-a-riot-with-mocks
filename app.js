@@ -1,9 +1,12 @@
 var express = require('express');
 var app = express();
 var index = require('./routes/index');
+var account = require('./routes/account')
 
 //Routes to use
 app.use('/', index);
+// app.use('/mocks', mocks);
+app.use('/account', account);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -22,5 +25,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render(err.message);
 });
+
 
 module.exports = app;
