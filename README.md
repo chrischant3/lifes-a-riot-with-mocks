@@ -68,6 +68,7 @@ Clone this mutha down, cd in
 npm start - will start the application on port 3000 - navigate to http://localhost:3000
 env PORT={port_number} npm start will start on http://localhost:{port_number}
 
+npm run dev - will start the application using nodemon
 ```
 
 ## Docker
