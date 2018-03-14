@@ -6,6 +6,8 @@ WORKDIR /app
 
 # Copy files to install
 ADD ./bin/ /app/bin/
+ADD ./db/ /app/db/
+ADD ./models/ /app/models
 ADD ./data/ /app/data/
 ADD ./routes/ /app/routes/
 ADD ./app.js /app

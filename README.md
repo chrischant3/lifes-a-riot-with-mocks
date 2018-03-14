@@ -26,19 +26,11 @@ router.post('/', function (req, res, next) {
 > Return an error code based on request parameter or body
 
 ```
-//Required variables
-var express = require('express');
-var router = express.Router();
-
-//Data to respond with
-var jsonResponse = require('../data/stub.json')
-
-//Logic to route
-router.get('/', function(req, res, next) {
-    res.json(jsonResponse)
+router.get('/:id', function(req, res, next) {
+    if (req.params.id == 'teapot') { 
+    res.status(418).end()
+    }
 });
-
-module.exports = router;
 
 ```
 

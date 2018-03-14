@@ -27,10 +27,11 @@ router.get('/:id', function (req, res, next) {
   if (!contentType || contentType != 'application/json') {
     res.status(406).json({'Error': 'Content Type should be application/json'})
   }
+  if (req.params.id == 'teapot') { res.status(418).end() }
+  if (req.params.id == null) { res.status(404).end() }
   accounts.findOne({_id: req.params.id}, function (err, account) {
     if (err) {
-      console.log(err)
-      res.status(404).end()
+      res.status(500).end(console.log(err))
     }
     if (account == null) {
       res.status(404).end()
@@ -62,8 +63,7 @@ router.put('/:id', function (req, res, next) {
   } else {
     accounts.update({_id: req.params.id}, req.body, {returnUpdatedDocs: true}, function (err, account) {
       if (err) {
-        console.log(err)
-        res.status(404).end()
+        res.status(500).end(console.log(err))
       }
       res.status(200).json(account)
     })
@@ -78,8 +78,8 @@ router.delete('/:id', function (req, res, next) {
 
   accounts.remove({_id: req.params.id}, {}, function (err, accountRemoved) {
     if (err) {
-      console.log(err)
-      res.status(404).end()
+
+      res.status(500).end(console.log(err))
     }
     res.status(204).end()
   })
